@@ -33,9 +33,3 @@ def campHash(hash1, hash2):
     return n
 def simlarity(img1,img2):
     return campHash(dhash(img1),dhash(img2))
-
-img1 = cv2.imread("F:/DataSet/huikangDataset/mydata/1-1/254.jpg")
-img2 = cv2.imread("F:/DataSet/huikangDataset/mydata/1-1/259.jpg")
-# img3 = cv2.imread("H:/Software/Study/Datasets/pig/train_img/1/185.jpg")
-print(campHash(dhash(img1),dhash(img2)))
-# print(campHash(dhash(img2),dhash(img3)))
