@@ -19,7 +19,7 @@ def getimg(cap,i):
 def makeVidData(video_file,save_path,begin_num = 0,dhash_thresh = 12):
     """
     :video_file:视频文件路径
-    :save_path:图片保存路径，结尾去掉/
+    :save_path:图片保存路径，结尾去掉
     :begin_num:数据保存命名的开始序号
     """
     cap = cv2.VideoCapture(video_file)#打开视频
@@ -71,6 +71,7 @@ def makeVidData(video_file,save_path,begin_num = 0,dhash_thresh = 12):
         # print(i)
         j+=1
 
+# 用于图像数据集
 def makeImgData(image_file,save_path,begin_num = 0,dhash_thresh = 12):
     """
     :video_file:视频文件路径
@@ -126,47 +127,13 @@ def makeImgData(image_file,save_path,begin_num = 0,dhash_thresh = 12):
 
 def main():
     '''
-    用于一个视频文件为一类的数据集提取，视频文件名即为类别名
-    '''
-    # video_file="F:/DataSet/惠康/进食已使用数据"
-    # save_path="H:/Software/Study/Datasets/pig/mydata"
-    # for file in os.listdir(video_file): #file: 1.mp4 2.mp4....
-    #     class_num = file.split(".")[0]
-    #     makeVidData(video_file+"/"+file,save_path+"/"+class_num,dhash_thresh = 12)
-
-    '''
     用于所有视频都为一类的数据提取，将图片按顺序放到指定文件夹下
     '''
-    video_file="F:/DataSet/惠康/进食已使用数据"
-    save_path="F:/DataSet/HuikangFeedDataset/BodyDetection/Body/mixHKJDBodySelfsup"
+    video_file="F:/DataSet/xxx"
+    save_path="F:/DataSet"
     for file in os.listdir(video_file): #file: 1abc.mp4 2cde.mp4....
         begin_num = len(os.listdir(save_path))
         makeVidData(video_file+"/"+file,save_path,dhash_thresh = 12,begin_num=begin_num)
-
-    '''
-    用于多个视频为一类的数据集提取
-    '''
-    # video_file="F:/DataSet/惠康/07"
-    # save_path="F:/DataSet/huikangDataset/mydata"
-    # begin_num = 0   # 数据命名开始的数字
-    # for file in os.listdir(video_file): #file: 种猪13 01 1 （am）.mp4
-    #     pen_num = int(file.split(" ")[1])   # 猪圈号
-    #     pig_num = int(file.split(" ")[2])   # 每个圈的猪的序号
-    #     folder_name = str(pen_num)+"-"+str(pig_num) # 最后，以此为每个类别的文件夹的名称
-    #     last_name = 0   # 以int形式保存最后一张图片的名字
-    #     if os.path.exists(save_path+"/"+folder_name):# 若目录存在，读取最后一个图片的序号
-    #         sort_list = os.listdir(save_path+"/"+folder_name)
-    #         sort_list = [int(i.split(".")[0]) for i in sort_list] 
-    #         sort_list.sort()
-    #         last_name = sort_list[-1]
-    #         begin_num = last_name+1
-    #     else:
-    #         begin_num = 0
-    #     makedata(video_file+"/"+file,save_path+"/"+folder_name,begin_num = begin_num)
-
-    # makeImgData("F:/DataSet/HuikangFeedDataset/FaceDetection/rawpigfacePen2/5","F:/DataSet/HuikangFeedDataset/FaceDetection/pigfacePen2/5",begin_num = 0,dhash_thresh = 12)
-
-    
 
 
 if __name__ == '__main__':
